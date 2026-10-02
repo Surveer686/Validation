@@ -1,0 +1,25 @@
+@prefix ex: <https://example.org/healthcare-ontology/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Every declared entity needs a label, at least one extracted type, and a domain membership.
+ex:EntityShape a sh:NodeShape ;
+    sh:targetClass ex:Entity ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:datatype xsd:string ; sh:message "Every entity must have a text label." ] ;
+    sh:property [ sh:path ex:entityType ; sh:minCount 1 ; sh:datatype xsd:string ; sh:message "Every entity must have at least one text entityType." ] ;
+    sh:property [ sh:path ex:inDomain ; sh:minCount 1 ; sh:class ex:BusinessDomain ; sh:message "Every entity must belong to at least one declared business domain." ] .
+
+# Domains must be represented as named nodes.
+ex:DomainShape a sh:NodeShape ;
+    sh:targetClass ex:BusinessDomain ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:datatype xsd:string ; sh:message "Every business domain must have a text label." ] .
+
+# Relationship records make source/target references explicit so unresolved endpoints are caught.
+ex:RelationshipShape a sh:NodeShape ;
+    sh:targetClass ex:Relationship ;
+    sh:property [ sh:path ex:source ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:Entity ; sh:message "Relationship must have exactly one source that is a declared entity." ] ;
+    sh:property [ sh:path ex:target ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:Entity ; sh:message "Relationship must have exactly one target that is a declared entity." ] ;
+    sh:property [ sh:path ex:relationshipType ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:message "Relationship must have exactly one text relationshipType." ] ;
+    sh:property [ sh:path ex:direction ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "incoming" "outgoing" ) ; sh:message "Direction must be incoming or outgoing in the source JSON." ] .

@@ -1,0 +1,136 @@
+{
+  "domains": 8,
+  "entity_occurrences": 911,
+  "unique_entity_names": 474,
+  "unique_name_type_pairs": 504,
+  "relationship_occurrences": 1738,
+  "unique_normalized_relationship_triples": 388,
+  "duplicate_relationship_occurrences": 1350,
+  "multi_typed_entity_names_count": 28,
+  "multi_typed_entity_names_examples": {
+    "Clinical Evidence": [
+      "Category",
+      "Concept"
+    ],
+    "Investment Trends": [
+      "Category",
+      "Section"
+    ],
+    "Ai Adoption": [
+      "Concept",
+      "Technology"
+    ],
+    "Ai Tools": [
+      "Concept",
+      "Technology"
+    ],
+    "Continuous Retraining": [
+      "Concept",
+      "Process"
+    ],
+    "Data Governance": [
+      "Challenge",
+      "Concept"
+    ],
+    "Drug Discovery": [
+      "Concept",
+      "Segment"
+    ],
+    "Federated Data Collaboration": [
+      "Concept",
+      "Trend"
+    ],
+    "Governance Costs": [
+      "Concept",
+      "Resource"
+    ],
+    "Health Systems": [
+      "Concept",
+      "Entity",
+      "Organization"
+    ],
+    "Healthcare": [
+      "Concept",
+      "Sector"
+    ],
+    "Initial Licensing": [
+      "Concept",
+      "Resource"
+    ],
+    "Medical Imaging": [
+      "Concept",
+      "Segment"
+    ],
+    "Monitoring": [
+      "Concept",
+      "Process"
+    ],
+    "Organizations": [
+      "Concept",
+      "Organization"
+    ],
+    "Patients": [
+      "Concept",
+      "Person",
+      "Stakeholder"
+    ],
+    "Precision Guidance": [
+      "Concept",
+      "Process"
+    ],
+    "Robotic Surgery": [
+      "Concept",
+      "Segment"
+    ],
+    "Virtual Health Assistants": [
+      "Concept",
+      "Segment"
+    ],
+    "Appendix A: Data Notes & Methodology": [
+      "Document",
+      "Section"
+    ],
+    "Report": [
+      "Document",
+      "Report"
+    ],
+    "Healthcare Leaders": [
+      "Entity",
+      "Group"
+    ],
+    "Clinicians": [
+      "Person",
+      "Stakeholder"
+    ],
+    "2027–2030": [
+      "Timeframe",
+      "Timeperiod"
+    ],
+    "Administrative Workflow": [
+      "Concept",
+      "Segment"
+    ],
+    "Large Language Models Enter Clinical Documentation": [
+      "Concept",
+      "Trend"
+    ],
+    "42%": [
+      "Growth",
+      "Metric"
+    ],
+    "Imaging Ai Receives Expanded Regulatory Clearances": [
+      "Concept",
+      "Trend"
+    ]
+  },
+  "declared_statistics": {
+    "unique_entities": 504,
+    "unique_relationships": 389,
+    "business_domains": 8
+  },
+  "json_structural_errors": 0,
+  "json_warnings": 3,
+  "rdf_triples": 13159,
+  "shacl_conforms": true,
+  "shacl_results": 0
+}
