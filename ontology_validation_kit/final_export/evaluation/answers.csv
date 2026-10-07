@@ -1,0 +1,35 @@
+q_id,category,method,subject,predicate,expected,predicted,match,classification,doc_location
+V01,VALUE,edge,North America,ADOPTION_SHARE,42%,42% (via adoption-share),PASS,MATCH,§6 Table 2 p.8
+V02,VALUE,edge,Asia-Pacific,ADOPTION_SHARE,22%,22% (via adoption-share),PASS,MATCH,§6 Table 2 p.8
+V03,VALUE,edge,Middle East & Africa,ADOPTION_SHARE,4%,4% (via adoption-share),PASS,MATCH,§6 Table 2 p.8
+V04,VALUE,edge,2021,MARKET_SIZE,6.7,6.7B (via market-size),PASS,MATCH,§3 Table 1 p.4
+V05,VALUE,edge,2023,MARKET_SIZE,13.4,13.4 (via market-size),PASS,MATCH,§3 Table 1 p.4
+V06,VALUE,edge,2026 (Proj.),MARKET_SIZE,36.1,36.1 (via market-size),PASS,MATCH,§3 Table 1 p.4
+V07,VALUE,node,,,4.9B,$4.9B,PASS,MATCH,§1 Key Findings p.2
+V08,VALUE,node,,,110B+,$110B+,PASS,MATCH,§1 Key Findings p.2
+V09,VALUE,edge,2023,,+41%,+41% (via market-growth),PASS,MATCH,§3 Table 1 p.4
+V10,VALUE,edge,Diagnostic Accuracy,IMPACT,4–9 Percentage Point Improvement Over Baseline In Select Imaging Tasks,4–9 Percentage Point Improvement Over Baseline In Select Imaging Tasks (via impact),PASS,MATCH,§8 Table 3 p.10
+R01,RELATION,edge,Regional Health System,DEPLOYED,Ai-Assisted Radiology Triage Tool,Ai-Assisted Radiology Triage Tool (via deployed),PASS,MATCH,§11 Case Study A p.13
+R02,RELATION,edge,Clinician Champion,CHAMPIONED,Ai-Assisted Radiology Triage Tool,Ai-Assisted Radiology Triage Tool (via championed),PASS,MATCH,§11 Case Study A p.13
+R03,RELATION,edge,Escalation Protocol,GOVERNED_BY,Ai-Assisted Radiology Triage Tool,Ai-Assisted Radiology Triage Tool (via governed-by),PASS,MATCH,§11 Case Study A p.13
+R04,RELATION,edge,Ongoing Monitoring Roles,DETECT,Model Drift,Model Drift (via detect),PASS,MATCH,§12 p.14
+R05,RELATION,edge,Data Privacy And Security Concerns,BARRIER,Ai,Ai (via barrier),PASS,MATCH,§9 p.11
+R06,RELATION,edge,Integration With Legacy Electronic Health Record Systems,BARRIER,Ai,Ai (via barrier),PASS,MATCH,§9 p.11
+R07,RELATION,edge,Executive Sponsors,BUDGET_FOR,Governance Costs,Governance Costs (via budget-for),PASS,MATCH,§14 p.16
+L01,LIST,nodes,,,Medical Imaging|Diagnostics|Drug Discovery|Virtual Health Assistants|Administrative Workflow|Robotic Surgery,6/6 found,PASS,MATCH,§4 p.5
+L02,LIST,nodes,,,Multimodal Diagnostic Models|Generative Ai Documentation|Continuous Learning Systems|Ai-Enabled Remote Monitoring|Federated Data Collaboration,5/5 found,PASS,MATCH,§13 Table 4 p.15
+L03,LIST,nodes,,,Bias And Equity|Transparency|Accountability|Informed Consent|Data Governance,5/5 found,PASS,MATCH,§10 p.12
+L04,LIST,nodes,,,Clinical Ai Liaisons|Model Governance Specialists|Data Quality Analysts,3/3 found,PASS,MATCH,§12 p.14
+D01,DEFINITION,defines_text,Clinical Ai,,"AI systems used directly in diagnosis, treatment planning, or patient monitoring.","Ai Systems Used Directly In Diagnosis, Treatment Planning, Or Patient Monitoring.",PASS,MATCH,§2 Definitions p.3
+D02,DEFINITION,defines_text,Administrative Ai,,"AI systems used for scheduling, billing, documentation, and other non-clinical workflows.","Ai Systems Used For Scheduling, Billing, Documentation, And Other Non-Clinical Workflows.",PASS,MATCH,§2 Definitions p.3
+D03,DEFINITION,defines_text,Explainability,,The degree to which a model's output can be interpreted and justified by a human user.,"defined as: Formal Authorization (E.G., Fda Clearance/Approval) Permitting Clinical Marketing Of A Device Or Algorithm.",FAIL,WRONG_DEFINITION,§2 Definitions p.3
+D04,DEFINITION,defines_text,Regulatory Clearance,,"Formal authorization (e.g., FDA clearance/approval) permitting clinical marketing of a device or algorithm.",subject has no defines edge,FAIL,NO_DEFINITION_EDGE,§2 Definitions p.3
+K01,CASE_REC,edge,Physicians,REPORTS,After-Hours Documentation Time,After-Hours Documentation Time (via reports),PASS,MATCH,§11 Case Study B p.13
+K02,CASE_REC,node,,,Eye Contact,Eye Contact,PASS,MATCH,§11 Case Study B p.13
+K03,CASE_REC,edge,Institutions,CREATE,Formal Governance Committees,Formal Governance Committees (via create),PASS,MATCH,§12 p.14
+K04,CASE_REC,edge,Clinician Buy-In,CORRELATED_WITH,Successful Long-Term Adoption,Successful Long-Term Adoption (via correlated-with),PASS,MATCH,§12 p.14
+C01,COMPLETENESS,node,,,Phased Rollout,,FAIL,MISSING_FROM_ONTOLOGY,§11 Case Study A p.13
+C02,COMPLETENESS,node,,,Medical Device Regulation (MDR),Medical Device Regulation (Mdr),PASS,MATCH,§10 p.12
+C03,COMPLETENESS,defines_text,Model Drift,,A decline in model performance over time as real-world data patterns diverge from training data.,defined as: Model Drift Definition,FAIL,WRONG_DEFINITION,§B Glossary p.19
+C04,COMPLETENESS,node,,,Pajama Time,Pajama Time,PASS,MATCH,§11 Case Study B p.13
+C05,COMPLETENESS,node,,,Federated Learning,Federated Learning,PASS,MATCH,§B Glossary p.19
