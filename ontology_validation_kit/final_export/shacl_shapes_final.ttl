@@ -1,0 +1,81 @@
+@prefix ex: <https://example.org/healthcare-ontology/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Every declared entity needs a label, at least one extracted type, and a domain membership.
+ex:EntityShape a sh:NodeShape ;
+    sh:targetClass ex:Entity ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:datatype xsd:string ; sh:message "Every entity must have a text label." ] ;
+    sh:property [ sh:path ex:entityType ; sh:minCount 1 ; sh:datatype xsd:string ; sh:message "Every entity must have at least one text entityType." ] ;
+    sh:property [ sh:path ex:inDomain ; sh:minCount 1 ; sh:class ex:BusinessDomain ; sh:message "Every entity must belong to at least one declared business domain." ] .
+
+# Domains must be represented as named nodes.
+ex:DomainShape a sh:NodeShape ;
+    sh:targetClass ex:BusinessDomain ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:datatype xsd:string ; sh:message "Every business domain must have a text label." ] .
+
+# Relationship records make source/target references explicit so unresolved endpoints are caught.
+ex:RelationshipShape a sh:NodeShape ;
+    sh:targetClass ex:Relationship ;
+    sh:property [ sh:path ex:source ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:Entity ; sh:message "Relationship must have exactly one source that is a declared entity." ] ;
+    sh:property [ sh:path ex:target ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:Entity ; sh:message "Relationship must have exactly one target that is a declared entity." ] ;
+    sh:property [ sh:path ex:relationshipType ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:message "Relationship must have exactly one text relationshipType." ] ;
+    sh:property [ sh:path ex:direction ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ( "incoming" "outgoing" ) ; sh:message "Direction must be incoming or outgoing in the source JSON." ] .
+
+
+ex:EntityTypeVocabulary a sh:NodeShape ;
+    sh:targetClass ex:Entity ;
+    sh:property [ sh:path ex:entityType ;
+        sh:in (
+        "Amount" "Application" "Benefit" "Category" "Challenge" "Concept"
+        "Country" "Data" "Date" "Definition" "Deployment_complexity" "Document"
+        "Driver" "Education" "Group" "Growth" "Implication" "Journal"
+        "Methodology" "Metric" "Organization" "Page" "Person" "Process"
+        "Program" "Region" "Regulation" "Regulatory_maturity" "Resource" "Section"
+        "Sector" "Segment" "Source" "Stakeholder" "Table" "Technology"
+        "Time_to_value" "Timeframe" "Tool" "Trend" "Value" "Year"
+    ) ;
+        sh:message "entityType must be one of the declared type vocabulary." ] .
+
+ex:RelationshipTypeVocabulary a sh:NodeShape ;
+    sh:targetClass ex:Relationship ;
+    sh:property [ sh:path ex:relationshipType ;
+        sh:in (
+        "ABOUT" "ACCELERATES" "ACROSS" "ADDRESSES" "ADOPT" "ADOPTION_SHARE"
+        "ADOPTS_FASTEST" "AFFECTS" "AFTER" "ALIAS" "ALLOCATES_TO" "APPLIED_IN"
+        "APPLIED_TO" "APPROVE" "APPROXIMATES" "ARE" "AS" "ASSISTS"
+        "AWARE_OF" "BARRIER" "BEGIN" "BENEFITS" "BUDGET_FOR" "BUILDS"
+        "CAN_CAUSE" "CAUSES" "CENTERED_ON" "CHALLENGE" "CHAMPIONED" "CLEARED"
+        "CLOSES_WITH" "COMMUNICATES_WITH" "COMMUNICATE_ABOUT" "COMPARED_WITH" "COMPARISON_AGAINST" "CONSULTS"
+        "CONTAINS" "CONTRIBUTES_TO" "CORE_COMPETENCY_IN" "CORRELATED_WITH" "COVERS" "CREATE"
+        "DATE" "DEFINES" "DEPEND_ON" "DEPLOYED" "DEPLOYMENT_COMPLEXITY" "DESCRIBES"
+        "DETECT" "DETECTS_IN" "DIFFERS_FROM" "DIFFER_IN" "DOMINANT_IN" "DRIVEN_BY"
+        "DURING" "EMBEDDED_IN" "ENABLE" "ENHANCED_BY" "EQUIVALENT_TO" "ESTABLISHES"
+        "EVALUATED_IN" "EVALUATES" "EXAMINES" "EXCLUDE" "EXPANDS" "EXPANDS_BEYOND"
+        "EXPANDS_INTO" "EXPECTS" "EXPERIENCE_CONFIDENCE" "EXPERIENCE_REDUCTION" "FASTEST_GROWING_REGION" "FIT_INTO"
+        "FOR" "GENERATED_AS" "GOVERNED_BY" "GROWTH" "HAS" "HAS_BENEFIT"
+        "HAS_PAGE" "HAS_REGULATION" "HAS_SECTION" "HAS_TITLE" "ILLUSTRATES" "IMPACT"
+        "IMPLEMENTS" "IMPLICATION" "IMPROVES_ACCURACY" "INCLUDES" "INFLECTION_POINT" "INFORMED_ABOUT"
+        "INVESTS_IN" "IS" "IS_A" "IS_BARRIER" "IS_MODEL_FOR" "LOCATED_AT"
+        "LOCATED_ON" "LOWER_THAN" "MARKET_GROWTH" "MARKET_SIZE" "MATCHES_PERFORMANCE_OF" "MENTIONS"
+        "MODEL_FOR" "NOTE" "NOT_DRAWN_FROM" "NOT_EVALUATED_IN" "NOT_FROM" "OPERATES_IN"
+        "OVER" "OVERTAKES" "PAIR_WITH" "PART_OF" "PERFORMS" "PERFORM_AT_OR_ABOVE"
+        "PHENOMENON_OF" "PRIORITIZES" "PROJECTED_SIZE" "PROTECTS" "PROVIDES" "RECEIVE"
+        "RECOMMENDS_FOR" "REFLECTS" "REGULATED" "REGULATORY_MATURITY" "RELATED_TO" "REPORTED_SEPARATELY"
+        "REPORTS" "REPRESENTATIVE_OF" "REPRESENTS" "REQUIRES" "REVIEW" "SENSITIVE_TO"
+        "SIZE" "SUGGESTED_SOURCE" "SUPPORTS" "SYNTHESIZES" "TARGETS" "TESTED_PROSPECTIVELY"
+        "TESTED_RETROSPECTIVELY" "TIMEFRAME" "TIME_TO_VALUE" "TOPIC" "TRACK" "TRANSITION_FROM"
+        "TRANSITION_TO" "TREAT" "TREAT_AS" "TREND" "TYPE_OF" "USED_FOR"
+        "USED_IN" "USES" "VALIDATED_ON" "WORK_WITH" "YEAR"
+    ) ;
+        sh:message "relationshipType must be one of the declared predicate vocabulary." ] .
+
+ex:NoSelfLoopShape a sh:NodeShape ;
+    sh:targetClass ex:Relationship ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Relationship source and target must differ (self-loop)." ;
+        sh:select """SELECT $this WHERE { $this ex:source ?x ; ex:target ?y . FILTER(?x = ?y) }"""
+    ] .
