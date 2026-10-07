@@ -1,0 +1,35 @@
+q_id,category,question,subject,predicate,expected,aliases,doc_location,method
+V01,VALUE,What was North America's adoption share of global AI healthcare?,North America,ADOPTION_SHARE,42%,,§6 Table 2 p.8,edge
+V02,VALUE,What was Asia-Pacific's adoption share?,Asia-Pacific,ADOPTION_SHARE,22%,,§6 Table 2 p.8,edge
+V03,VALUE,What was the Middle East & Africa adoption share?,Middle East & Africa,ADOPTION_SHARE,4%,,§6 Table 2 p.8,edge
+V04,VALUE,What was the market size in 2021 in USD billions?,2021,MARKET_SIZE,6.7,6.7B,§3 Table 1 p.4,edge
+V05,VALUE,What was the market size in 2023 in USD billions?,2023,MARKET_SIZE,13.4,13.4B,§3 Table 1 p.4,edge
+V06,VALUE,What was the projected 2026 market size in USD billions?,2026 (Proj.),MARKET_SIZE,36.1,36.1B,§3 Table 1 p.4,edge
+V07,VALUE,What was the global AI-in-healthcare market in 2020?,,,4.9B,$4.9B,§1 Key Findings p.2,node
+V08,VALUE,What is the projected global market by 2030?,,,110B+,$110B+,§1 Key Findings p.2,node
+V09,VALUE,What was the year-over-year growth in 2023?,2023,,+41%,41%,§3 Table 1 p.4,edge
+V10,VALUE,How much do AI-assisted diagnostic tools improve accuracy over baseline?,Diagnostic Accuracy,IMPACT,4–9 Percentage Point Improvement Over Baseline In Select Imaging Tasks,,§8 Table 3 p.10,edge
+R01,RELATION,Which AI tool did the regional health system deploy?,Regional Health System,DEPLOYED,Ai-Assisted Radiology Triage Tool,,§11 Case Study A p.13,edge
+R02,RELATION,Which figure championed the radiology triage tool?,Clinician Champion,CHAMPIONED,Ai-Assisted Radiology Triage Tool,,§11 Case Study A p.13,edge
+R03,RELATION,What is the escalation protocol governed by?,Escalation Protocol,GOVERNED_BY,Ai-Assisted Radiology Triage Tool,,§11 Case Study A p.13,edge
+R04,RELATION,What do ongoing monitoring roles detect?,Ongoing Monitoring Roles,DETECT,Model Drift,,§12 p.14,edge
+R05,RELATION,Which entity do data privacy and security concerns act as a barrier to?,Data Privacy And Security Concerns,BARRIER,Ai,,§9 p.11,edge
+R06,RELATION,Which entity does legacy EHR integration act as a barrier to?,Integration With Legacy Electronic Health Record Systems,BARRIER,Ai,,§9 p.11,edge
+R07,RELATION,Which governance cost item do executive sponsors budget for?,Executive Sponsors,BUDGET_FOR,Governance Costs,,§14 p.16,edge
+L01,LIST,Name the six AI application segments.,,,Medical Imaging|Diagnostics|Drug Discovery|Virtual Health Assistants|Administrative Workflow|Robotic Surgery,,§4 p.5,nodes
+L02,LIST,Name the five future outlook trends.,,,Multimodal Diagnostic Models|Generative Ai Documentation|Continuous Learning Systems|Ai-Enabled Remote Monitoring|Federated Data Collaboration,,§13 Table 4 p.15,nodes
+L03,LIST,Name the five core ethical considerations.,,,Bias And Equity|Transparency|Accountability|Informed Consent|Data Governance,,§10 p.12,nodes
+L04,LIST,Name the three emerging workforce roles.,,,Clinical Ai Liaisons|Model Governance Specialists|Data Quality Analysts,,§12 p.14,nodes
+D01,DEFINITION,What is clinical AI?,Clinical Ai,,"AI systems used directly in diagnosis, treatment planning, or patient monitoring.",,§2 Definitions p.3,defines_text
+D02,DEFINITION,What is administrative AI?,Administrative Ai,,"AI systems used for scheduling, billing, documentation, and other non-clinical workflows.",,§2 Definitions p.3,defines_text
+D03,DEFINITION,What is explainability?,Explainability,,The degree to which a model's output can be interpreted and justified by a human user.,,§2 Definitions p.3,defines_text
+D04,DEFINITION,What is regulatory clearance?,Regulatory Clearance,,"Formal authorization (e.g., FDA clearance/approval) permitting clinical marketing of a device or algorithm.",,§2 Definitions p.3,defines_text
+K01,CASE_REC,What do physicians report as reduced after-hours documentation time?,Physicians,REPORTS,After-Hours Documentation Time,,§11 Case Study B p.13,edge
+K02,CASE_REC,Which patient behavior improved during visits with ambient AI scribes?,,,Eye Contact,,§11 Case Study B p.13,node
+K03,CASE_REC,What do institutions create to review and approve new clinical AI tools?,Institutions,CREATE,Formal Governance Committees,,§12 p.14,edge
+K04,CASE_REC,What is clinician buy-in correlated with?,Clinician Buy-In,CORRELATED_WITH,Successful Long-Term Adoption,,§12 p.14,edge
+C01,COMPLETENESS,Which Case Study A success factor refers to a stepwise rollout strategy?,,,Phased Rollout,,§11 Case Study A p.13,node
+C02,COMPLETENESS,Which EU regulation must AI-enabled medical devices satisfy alongside the EU AI Act?,,,Medical Device Regulation (MDR),,§10 p.12,node
+C03,COMPLETENESS,What is the glossary definition of model drift?,Model Drift,,A decline in model performance over time as real-world data patterns diverge from training data.,,§B Glossary p.19,defines_text
+C04,COMPLETENESS,What is the colloquial term for reduced after-hours documentation time?,,,Pajama Time,,§11 Case Study B p.13,node
+C05,COMPLETENESS,Which training approach learns across institutions without centralizing raw data?,,,Federated Learning,,§B Glossary p.19,node
